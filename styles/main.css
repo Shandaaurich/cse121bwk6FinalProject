@@ -1,0 +1,77 @@
+/* HTML Selectors */
+article {
+  margin: 10px;
+}
+
+body {
+  font-family: "quicksand", sans-serif;
+  color: #efefef;
+  background-image: url("../images/earthlights.jpg");
+  /* background-position: center; */
+}
+
+h3 {
+  margin-top: 0%;
+}
+
+div {
+  margin: 10px;
+  /* text-align: center; */
+}
+
+footer {
+  background-color: gray;
+  color: white;
+  padding: 5px;
+  text-align: center;
+}
+
+header {
+  margin: auto;
+  text-align: center;
+}
+
+img {
+  width: 80%;
+}
+
+label {
+  display: inline-block;
+  min-width: 120px;
+  text-align: right;
+}
+
+/* main {
+  text-align: center;
+} */
+
+#rockets {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* Media Queries  */
+@media only screen and (min-width: 32.5em) {
+  article {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rocketCountdown {
+    text-align: center;
+    grid-column: 1/3;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  article {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .rocketCountdown {
+    text-align: center;
+    grid-column: 3/4;
+  }
+}

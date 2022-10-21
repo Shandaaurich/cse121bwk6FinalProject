@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSE 121b Final Project | Rocket Launches</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Upcoming Rocket Launches Around the World</h1>
+    </header>
+    <main>
+
+        <hr>
+
+        <section>
+            <p>
+                Filter Agencies by:
+                <select id="filterBy">
+                    <option value="filter" selected disabled>First letter [a-z]:</option>
+                    <option value="a-f">a-f</option>
+                    <option value="g-l">g-l</option>
+                    <option value="m-r">m-r</option>
+                    <option value="s-z">s-z</option>
+                </select>
+            </p>
+            <div id="rockets">
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy;<span id="fullDate"></span> | Rocket Launch Schedule | Shanda Aurich
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/launchCode.js"></script>
+</body>
+
+</html>
