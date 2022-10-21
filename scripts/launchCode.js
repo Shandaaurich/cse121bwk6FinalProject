@@ -35,7 +35,7 @@ function output(rockets) {
         let h4_2 = document.createElement('p');
         let h4_3 = document.createElement('p');
         let img = document.createElement('img');
-        let counterP = document.createElement('p');
+        let counterh3 = document.createElement('h3');
 
         let localDate = new Date(rocket.window_start)
         let localDateFormated = localDate.toLocaleString()
@@ -46,14 +46,15 @@ function output(rockets) {
         div2.setAttribute('class', 'rocketImg')
         div3.setAttribute('id', 'rocketCountdown')
         h3.innerHTML = `Mission: ${rocket.mission.name}`;
-        date.innerHTML = `\nExpected Launch Date: ${localDateFormated} UTC`
+        date.innerHTML = `Expected Launch Date: 
+        ${localDateFormated} UTC`
         h4.innerHTML = `Agency: ${rocket.launch_service_provider.name} `;
         h4_1.innerHTML = `Rocket: ${rocket.name} `;
         h4_2.innerHTML = `Location: ${rocket.pad.location.name} `
         h4_3.innerHTML = `Launch status: ${rocket.status.name} `
         img.src = rocket.image;
         img.setAttribute('alt', `${rocket.name} `);
-        counterP.innerHTML = `This is where the countdown timer will go`
+        counterh3.innerHTML = `Countdown to liftoff:${countdown(localDate, rocket.status.name)}`
 
         article.appendChild(div1);
         div1.appendChild(h3);
@@ -64,7 +65,7 @@ function output(rockets) {
         div1.appendChild(h4_3);
         article.appendChild(div2);
         article.appendChild(div3);
-        div3.appendChild(counterP);
+        div3.appendChild(counterh3);
 
         launchesOutput.appendChild(article)
 
@@ -82,8 +83,9 @@ function output(rockets) {
             h4_4.innerHTML = `Current weather: ${temp}&#176; F, ${description}`
             div1.appendChild(h4_4);
         }
-        countdown(localDate, rocket.status.name)
         div2.appendChild(img);
+
+
     })
 };
 
