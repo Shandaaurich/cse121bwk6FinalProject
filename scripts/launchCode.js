@@ -89,7 +89,7 @@ function output(rockets) {
     })
 };
 
-//Countdown timer function
+//Countdown timer function code found here: https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/
 function countdown(date, status) {
     var deadline = new Date(date).getTime();
     var x = setInterval(function () {
