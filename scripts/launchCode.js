@@ -1,8 +1,8 @@
 
 //get launch data from API URL and request it in JSON format
 
-const launchURL = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming?format=json';
-// const launchURL = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json';
+// const launchURL = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming?format=json';
+const launchURL = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json';
 
 
 async function getLaunches() {
