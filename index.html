@@ -18,10 +18,20 @@
 
         <hr>
 
-        <section>
-            <div id="rockets">
-            </div>
+        <section class="agencyFilter">
+            <p>
+                Filter Agencies by:
+                <select id="filterBy">
+                    <option value="filter" selected disabled>First letter [a-z]:</option>
+                    <option value="a-f">a-f</option>
+                    <option value="g-l">g-l</option>
+                    <option value="m-r">m-r</option>
+                    <option value="s-z">s-z</option>
+                </select>
+            </p>
         </section>
+        <div id="rockets">
+        </div>
     </main>
     <footer>
         &copy;<span id="fullDate"></span> | Rocket Launch Schedule | Shanda Aurich

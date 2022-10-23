@@ -1,8 +1,8 @@
 
 //get launch data from API URL and request it in JSON format
 
-// const launchURL = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming?format=json';
-const launchURL = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json';
+const launchURL = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming?format=json';
+// const launchURL = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json';
 
 
 async function getLaunches() {
@@ -15,19 +15,8 @@ async function getLaunches() {
         output(data.results)
     }
 }
-
-async function getWeather() {
-
-    const response = await fetch(launchURL);
-
-    if (response.ok) {
-        data = await response.json();
-
-        output(data.results)
-    }
-}
-
 getLaunches()
+
 //output the data into HTML components on the page created dynamically
 
 const launchesOutput = document.querySelector('#rockets');
@@ -105,9 +94,8 @@ function output(rockets) {
         div2.appendChild(img);
         div3.appendChild(date);
         div3.appendChild(counterh3);
-
-
     })
+
 };
 
 //reset function for sort and filter functions
@@ -116,47 +104,52 @@ function reset() {
 }
 
 //Filter launches by agency Name
-function filterBy() {
-    reset();
+async function filterBy() {
 
+    reset();
     selectedValue = document.querySelector('#filterBy').value;
 
-    switch (selectedValue) {
-        case "a-f":
-            output(data.results.filter((agency) => {
-                (agency.launch_service_provider.name.startsWith('R'))
-            }));
-            break;
+    const response = await fetch(launchURL);
 
-        // if (selectedValue == 'a-f') {
-        //             output(data.results.filter((agency) => {
-        //                 if ((agency.launch_service_provider.name.startsWith('A')) || (agency.launch_service_provider.name.startsWith('B')) || (agency.launch_service_provider.name.startsWith('C')) || (agency.launch_service_provider.name.startsWith('D')) || (agency.launch_service_provider.name.startsWith('E')) || (agency.launch_service_provider.name.startsWith('F'))) {
-        //                     return agency
-        //                 }
-        //                 console.log(agency)
-        //             }))
-        //         }
-        //         else if (selectedValue == 'g-l') {
-        //             output(data.results.filter((agency) => {
-        //                 if ((agency.launch_service_provider.name.startsWith('G')) || (agency.launch_service_provider.name.startsWith('H')) || (agency.launch_service_provider.name.startsWith('I')) || (agency.launch_service_provider.name.startsWith('J')) || (agency.launch_service_provider.name.startsWith('K')) || (agency.launch_service_provider.name.startsWith('L'))) {
-        //                     return agency
-        //                 }
-        //             }))
-        //         }
-        //         else if (selectedValue == 'm-r') {
-        //             output(data.results.filter((agency) => {
-        //                 if ((agency.launch_service_provider.name.startsWith('M')) || (agency.launch_service_provider.name.startsWith('N')) || (agency.launch_service_provider.name.startsWith('O')) || (agency.launch_service_provider.name.startsWith('P')) || (agency.launch_service_provider.name.startsWith('Q')) || (agency.launch_service_provider.name.startsWith('R'))) {
-        //                     return agency
-        //                 }
-        //             }))
-        //         }
-        //         else if (selectedValue == 's-z') {
-        //             output(data.results.filter((agency) => {
-        //                 if ((agency.launch_service_provider.name.startsWith('S')) || (agency.launch_service_provider.name.startsWith('T')) || (agency.launch_service_provider.name.startsWith('U')) || (agency.launch_service_provider.name.startsWith('V')) || (agency.launch_service_provider.name.startsWith('W')) || (agency.launch_service_provider.name.startsWith('X'))) {
-        //                     return agency
-        //                 }
-        //             }))
+    if (response.ok) {
+        data = await response.json();
+
+        switch (selectedValue) {
+            case "a-f":
+                output(data.results.filter((agency) => {
+                    if ((agency.launch_service_provider.name.startsWith('A')) || (agency.launch_service_provider.name.startsWith('B')) || (agency.launch_service_provider.name.startsWith('C')) || (agency.launch_service_provider.name.startsWith('D')) || (agency.launch_service_provider.name.startsWith('E')) || (agency.launch_service_provider.name.startsWith('F'))) {
+                        return agency
+                        //                 }
+                        // if ((launchInfo.hours <= 24) && (launchInfo.days <= 0)) {
+                        //     return launchInfo
+                        // }
+                    }
+                }));
+                break;
+            case "g-l":
+                output(data.results.filter((agency) => {
+                    if ((agency.launch_service_provider.name.startsWith('G')) || (agency.launch_service_provider.name.startsWith('H')) || (agency.launch_service_provider.name.startsWith('I')) || (agency.launch_service_provider.name.startsWith('J')) || (agency.launch_service_provider.name.startsWith('K')) || (agency.launch_service_provider.name.startsWith('L'))) {
+                        return agency
+                    }
+                }));
+                break;
+            case "m-r":
+                output(data.results.filter((agency) => {
+                    if ((agency.launch_service_provider.name.startsWith('M')) || (agency.launch_service_provider.name.startsWith('N')) || (agency.launch_service_provider.name.startsWith('O')) || (agency.launch_service_provider.name.startsWith('P')) || (agency.launch_service_provider.name.startsWith('Q')) || (agency.launch_service_provider.name.startsWith('R'))) {
+                        return agency
+                    }
+                }));
+                break;
+            case "s-z":
+                output(data.results.filter((agency) => {
+                    if ((agency.launch_service_provider.name.startsWith('S')) || (agency.launch_service_provider.name.startsWith('T')) || (agency.launch_service_provider.name.startsWith('U')) || (agency.launch_service_provider.name.startsWith('V')) || (agency.launch_service_provider.name.startsWith('W')) || (agency.launch_service_provider.name.startsWith('X'))) {
+                        return agency
+                    }
+                }));
+                break;
+        }
     }
+
 }
 
 document.querySelector('#filterBy').addEventListener('change', filterBy);

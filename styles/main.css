@@ -10,6 +10,13 @@ body {
   /* background-position: center; */
 }
 
+.agencyFilter {
+  text-align: center;
+}
+select {
+  padding: 0.25rem;
+}
+
 h3 {
   margin-top: 0%;
 }
